@@ -2,5 +2,6 @@
 This is the repository for our group project in CSCI 4830 Intro to Software Engineering. 
 Team Members:
 Jonathan Bram
-Tyler
+Tyler Porter
 Vanessa Essono
+Teagan Rossman
