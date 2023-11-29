@@ -82,7 +82,7 @@ public class LoadDB extends HttpServlet {
 	      
 	      
 	      //CREATE POST BUTTON
-	      out.println("button {");
+	      out.println("button1 {");
 	      out.println("background-color: #ecaf05;");
 	      out.println("width: 8%;");
 	      out.println("color: #000000;");
@@ -94,7 +94,7 @@ public class LoadDB extends HttpServlet {
 	      out.println("height: 90%");
 	      out.println("}");
 	      
-	      out.println("button:hover {");
+	      out.println("button1:hover {");
 	      out.println("background-color: #b78702;");
 	      out.println("color: #ffffff;");
 	      //out.println("border: 4px double #f1da9f;");
@@ -211,9 +211,9 @@ public class LoadDB extends HttpServlet {
 	      
 	      
 	      
-	      out.println("<button>");
+	      out.println("<a href=/csci4830-project1/create_post.html class=\"button1\">");
 	      out.println("Create Post");
-	      out.println("</button>");
+	      out.println("</a>");
 	      
 	      out.println("<button2");
 	      

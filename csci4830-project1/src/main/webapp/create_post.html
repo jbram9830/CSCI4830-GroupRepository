@@ -5,20 +5,20 @@ header {
     background-color:black;
     color:white;
     text-align:center;
-    padding:5px;	 
+    padding:5px;
 }
 
 section {
     width:350px;
     float:left;
-    padding:10px;	 	 
+    padding:10px;
 }
 footer {
     background-color:rgb(0, 0, 0);
     color:rgb(0, 0, 0);
     clear:both;
     text-align:center;
-    padding:5px;	 	 
+    padding:5px;
 }
 
 body {
@@ -46,18 +46,19 @@ body {
 
 <body>
 <header>
-<h1> Search Data </h1>
+<h1> Create Post </h1>
 </header>
 
 <section>
-	<h1>Search for a Post</h1>
-	
-	<form action="SearchDB" method="POST">
-	
-		Post ID: <input type="string" name="keyword"> <br />
-		
-		<input type="submit" value="Load comments" />
-	</form>
+    <h1>Create a Post</h1>
+
+    <form action="InsertDB" method="POST">
+
+        User Alias: <input type="text" name="UserAlias"> <br />
+        Post Body: <input type="text" name="PostBody"> <br />
+
+        <input type="submit" value="Create Post" />
+    </form>
 
 </section>
 

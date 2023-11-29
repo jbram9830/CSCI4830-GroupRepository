@@ -1,0 +1,76 @@
+<html>
+<head>
+<style>
+header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;	 
+}
+
+section {
+    width:350px;
+    float:left;
+    padding:10px;	 	 
+}
+footer {
+    background-color:rgb(0, 0, 0);
+    color:rgb(0, 0, 0);
+    clear:both;
+    text-align:center;
+    padding:5px;	 	 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    height: 100vh;
+}
+
+
+.post-container {
+    max-height: 80%;
+    width: 65%;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1> Admin Dashboard </h1>
+</header>
+
+<section>
+	<h1>Delete a Post</h1>
+	
+	<form action="SearchDB" method="POST">
+	
+		Post ID: <input type="string" name="keyword"> <br />
+		
+		<input type="submit" value="Delete" />
+	</form>
+	
+	<h1>Delete a Comment</h1>
+	<form action="SearchDB" method="POST">
+	
+		Comment ID: <input type="string" name="keyword"> <br />
+		
+		<input type="submit" value="Delete" />
+	</form>
+
+</section>
+
+<footer>
+Copyright
+</footer>
+</body>
+</html>
