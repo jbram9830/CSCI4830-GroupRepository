@@ -37,9 +37,10 @@ body {
 .post-container {
     max-height: 80%;
     width: 65%;
-    overflow-y: scroll;
     border: 1px solid #ccc;
     padding: 10px;
+    background-color: #e6cd8a;
+    color: black;
 }
 </style>
 </head>
@@ -48,19 +49,20 @@ body {
 <header>
 <h1> Create Post </h1>
 </header>
-
+<div class="post-container">
 <section>
     <h1>Create a Post</h1>
 
     <form action="InsertDB" method="POST">
 
-        User Alias: <input type="text" name="UserAlias" required="required"> <br />
-        Post Body: <input type="textarea" name="PostBody" required="required"> <br />
+        User Alias: <input type="text" name="UserAlias" required="required" maxlength="30" placeholder="Max 30 characters..."> <br />
+        Post Body: <input type="text" name="PostBody" required="required" maxlength="500"> <br />
 
         <input type="submit" value="Create Post" />
     </form>
 
 </section>
+</div>
 
 <footer>
 Copyright

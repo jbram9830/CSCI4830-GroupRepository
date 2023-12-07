@@ -37,9 +37,10 @@ body {
 .post-container {
     max-height: 80%;
     width: 65%;
-    overflow-y: scroll;
     border: 1px solid #ccc;
     padding: 10px;
+    background-color: #e6cd8a;
+    color: black;
 }
 </style>
 </head>
@@ -48,22 +49,33 @@ body {
 <header>
 <h1> Create Post </h1>
 </header>
-
+<div class="post-container">
 <section>
     <h1>Create a Post</h1>
 
     <form action="InsertDB" method="POST">
 
-        User Alias: <input type="text" name="UserAlias" required="required"> <br />
-        Trail Name: <input type="text" name="TrailName" required="required"> <br />
-        Post Body: <input type="text" name="PostBody" placeholder="Event Details..." required="required"> <br />
-        Event date/time: <input type="text" name="EventDateTime"> <br />
+        User Alias: <input type="text" name="UserAlias" required="required" maxlength="30" placeholder="Max 30 characters..."> <br />
+        <select name="TrailName">
+            <option value="Jewell">Jewell</option>
+			<option value="Lewis & Clark">Lewis & Clark</option>
+			<option value="Mandan">Mandan</option>
+			<option value="Oxbow">Oxbow</option>
+			<option value="Platte">Platte</option>
+			<option value="Swanson">Swanson</option>
+			<option value="Tranquility">Tranquility</option>
+			<option value="Walnut Creek">Walnut Creek</option>
+			<option value="Other">Other</option>
+
+        </select> <br />
+        Post Body: <input type="text" name="PostBody" placeholder="Event Details..." required="required"  maxlength="500"> <br />
+        Event date/time: <input type="text" name="EventDateTime" maxlength="45"> <br />
 
         <input type="submit" value="Create Post" />
     </form>
 
 </section>
-
+</div>
 <footer>
 Copyright
 </footer>

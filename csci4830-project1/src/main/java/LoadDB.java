@@ -57,6 +57,15 @@ public class LoadDB extends HttpServlet {
 	      //IMAGES
 	      //platte https://i.imgur.com/UCmjzJJ.png
 	      //
+	      //w1 https://i.imgur.com/wI2KGxe.png
+	      //w2 https://i.imgur.com/dqS665W.png
+	      //w3 https://i.imgur.com/RRrQBbD.png
+	      //w4 https://i.imgur.com/nLK11iE.png
+	      //w5 https://i.imgur.com/WbDkNkz.png
+	      //
+	      //
+	      //
+	      //
 	      //
 	      
 	      //REFRESH BUTTON
@@ -69,15 +78,12 @@ public class LoadDB extends HttpServlet {
 	      out.println("background-repeat: no-repeat;");
 	      out.println("color: #000000;");
 	      out.println("text-align: center;");
-	      //out.println("border: 4px double #48443a;");
-	      //out.println("border-radius: 30px;");
 	      out.println("height: 90%");
 	      out.println("}");
 	      
 	      out.println("button2:hover {");
 	      out.println("background-color: #b78702;");
 	      out.println("color: #ffffff;");
-	      //out.println("border: 4px double #f1da9f;");
 	      out.println("}");
 	      
 	      
@@ -89,15 +95,12 @@ public class LoadDB extends HttpServlet {
 	      out.println("text-align: center;");
 	      out.println("font-size: 16px;");
 	      out.println("font-weight: bold;");
-	      //out.println("border: 4px double #48443a;");
-	      //out.println("border-radius: 30px;");
 	      out.println("height: 90%");
 	      out.println("}");
 	      
 	      out.println("button1:hover {");
 	      out.println("background-color: #b78702;");
 	      out.println("color: #ffffff;");
-	      //out.println("border: 4px double #f1da9f;");
 	      out.println("}");
 	      
 	      
@@ -133,7 +136,6 @@ public class LoadDB extends HttpServlet {
 	      out.println("height: 80%;");
 	      out.println("width: 65%;");
 	      out.println("overflow-y: scroll;");
-	      //out.println("border: 1px solid #ccc;");
 	      out.println("padding: 10px;");
 	      out.println("}");
 	     
@@ -147,17 +149,55 @@ public class LoadDB extends HttpServlet {
 	      out.println("margin-bottom: 20px;");
 	      out.println("padding-left: 1%;");
 	      out.println("padding-right: 1%;");
+	      out.println("padding-top: 1%;");
+	      out.println("padding-bottom: 1%;");
+	      out.println("word-wrap: break-word;");
+	      out.println("}");
+	      
+	    //AV BODY
+	      out.println(".av-body {");
+	      out.println("color: black;");
+	      out.println("background-color: #ecaf05;");
+	      out.println("max-width: 80%;");
+	      out.println("position: relative;");
+	      out.println("margin-top: 1%;");
+	      out.println("margin-bottom: 1%;");
+	      out.println("padding: 1%;");
+	      out.println("word-wrap: break-word;");
 	      out.println("}");
 	      
 	      //POST BODY
 	      out.println(".post-body {");
 	      out.println("color: black;");
-	      out.println("background-color: #e6cd8a;");
-	      out.println("max-width: 400px;");
+	      out.println("background-color: #e0dede;");
+	      out.println("max-width: 80%;");
 	      out.println("position: relative;");
-	      out.println("margin-bottom: 20px;");
-	      out.println("padding-left: 1%;");
-	      out.println("padding-right: 1%;");
+	      out.println("margin-top: 1%;");
+	      out.println("margin-bottom: 1%;");
+	      out.println("padding: 1%;");
+	      out.println("word-wrap: break-word;");
+	      out.println("}");
+	      
+	      //SCORE BODY
+	      out.println(".score-body {");
+	      out.println("color: black;");
+	      out.println("max-width: 80%;");
+	      out.println("object-position: right center;");
+	      out.println("margin-top: 1%;");
+	      out.println("margin-bottom: 1%;");
+	      out.println("padding: 1%;");
+	      out.println("text-align: center;");
+	      out.println("}");
+	      
+	    //INFO BODY
+	      out.println(".info-body {");
+	      out.println("color: black;");
+	      out.println("position: relative;");
+	      out.println("max-width: 80%;");
+	      out.println("margin-top: 1%;");
+	      out.println("margin-bottom: 1%;");
+	      out.println("padding: 1%;");
+	      out.println("text-align: center;");
 	      out.println("}");
 	      
 	      //POST
@@ -169,6 +209,9 @@ public class LoadDB extends HttpServlet {
 	      out.println("position: relative;");
 	      out.println("padding-left: 5%;");
 	      out.println("padding-right: 5%;");
+	      //out.println("display: grid;");
+	      //out.println("flex-flow: row nowrap;");
+	      //out.println("justify-content: space-evenly;");
 	      out.println("}");
 	      
 	      //POST TYPE
@@ -176,24 +219,36 @@ public class LoadDB extends HttpServlet {
 	      out.println("font-weight: bold;");
 	      out.println("margin-top: 20px;");
 	      out.println("margin-bottom: 5px;");
-	      out.println("margin-left: 44%;");
-	      out.println("margin-right: auto;");
-	      out.println("position: absolute;");
-	      out.println("text-align: center;");
-	      out.println("}");
-	      out.println(".post-info {");
-	      out.println("font-weight: lighter;");
-	      out.println("margin-top: 5px;");
-	      out.println("margin-bottom: 5px;");
 	      out.println("margin-left: auto;");
-	      out.println("margin-right: 5px;");
-	      out.println("text-align: right;");
-	      out.println("max-width: 200px;");
-	      out.println("font-size: 10px;");
+	      out.println("margin-right: 1%;");
+	      out.println("position: relative;");
+	      out.println("text-align: left;");
 	      out.println("}");
 	      
-	      //POST TEXT
-	      out.println(".post-text {");
+	      //POST ALIAS
+	      out.println(".post-alias {");
+	      out.println("font-weight: bold;");
+	      out.println("margin-left: 1%;");
+	      out.println("margin-right: auto;");
+	      out.println("text-align: left;");
+	      out.println("max-width: 200px;");
+	      out.println("font-size: 14px;");
+	      out.println("position: relative;");
+	      out.println("}");
+	      
+	      //POST INFO
+	      out.println(".post-info {");
+	      out.println("font-weight: lighter;");
+	      out.println("margin-left: 1%;");
+	      out.println("margin-right: auto;");
+	      out.println("text-align: left;");
+	      out.println("max-width: 200px;");
+	      out.println("font-size: 10px;");
+	      out.println("position: relative;");
+	      out.println("}");
+	      
+	    //POST AVATAR
+	      out.println(".post-avatar {");
 	      out.println("padding: 20px;");
 	      out.println("max-width: 400px;");
 	      out.println("text-align: left;");
@@ -202,8 +257,54 @@ public class LoadDB extends HttpServlet {
 	      out.println("padding: 20px;");
 	      out.println("text-align: center;");
 	      out.println("}");
+	      
+	    //TC CONTAINER
+	      out.println(".post-tc-container {");
+	      out.println("padding: 20px;");
+	      out.println("max-width: 400px;");
+	      out.println("text-align: center;");
+	      out.println("}");
+	      
+	      out.println(".end-text {");
+	      out.println("padding: 20px;");
+	      out.println("text-align: center;");
+	      out.println("}");
+	     
+	    //TRAIL TEXT
+	      out.println(".trail-text {");
+	      out.println("padding: 10px;");
+	      out.println("max-width: 100%;");
+	      out.println("text-align: center;");
+	      out.println("font-size: 24px;");
+	      out.println("font-weight: bold;");
+	      out.println("}");
+	      
+	    //SCORE TEXT
+	      out.println(".score-text {");
+	      out.println("padding: 10px;");
+	      out.println("max-width: 100%;");
+	      out.println("text-align: center;");
+	      out.println("font-size: 24px;");
+	      out.println("font-weight: bold;");
+	      out.println("color: #2364cd");
+	      out.println("}");
+
+	      
+	      //POST TEXT
+	      out.println(".post-text {");
+	      out.println("padding: 20px;");
+	      out.println("max-width: 80%;");
+	      out.println("text-align: left;");
+	      out.println("}");
+	      
+	      out.println(".end-text {");
+	      out.println("padding: 20px;");
+	      out.println("text-align: center;");
+	      out.println("}");
 	      out.println("</style>");
 	      out.println("</head>");
+	      
+	      // // // // // // // / // // // // // // / // // // // // // / // // // // // // / // // // // // // / // // // // // // 
 	     
 	      out.println("<body>");
 	      out.println("<h1>Omaha Trail Conditions</h1>");
@@ -308,49 +409,55 @@ public class LoadDB extends HttpServlet {
 	      
 	      out.println("        var postType = document.createElement('div');");
 	      out.println("        postType.className = 'post-type';");
-	      out.println("        postType.textContent = 'EVENT';");
+	      out.println("        postType.textContent = 'EVENT POST';");
 	      out.println("        postElement.appendChild(postType);");
 	      
+	      
+	      
+	      
+	      out.println("        var avatarBody = document.createElement('div');");
+	      out.println("        avatarBody.className = 'av-body';");
+	      out.println("        postElement.appendChild(avatarBody);");
+	      
+	      out.println("var avatar = document.createElement('div');");
+	      out.println("avatar.className = 'post-avatar';");
+	      out.println("var img = document.createElement('img');");
+	      out.println("img.src = 'https://i.imgur.com/FYgOL3s.png';");
+	      out.println("avatar.appendChild(img);");
+	      out.println("avatarBody.appendChild(avatar);");
+	      
 	      out.println("        var posterAlias = document.createElement('div');");
-	      out.println("        posterAlias.className = 'post-info';");
+	      out.println("        posterAlias.className = 'post-alias';");
 	      out.println("        posterAlias.textContent = 'Poster: ' + post.poster_alias;");
-	      out.println("        postElement.appendChild(posterAlias);");
+	      out.println("        avatarBody.appendChild(posterAlias);");
 	      
 	      out.println("        var postTimestamp = document.createElement('div');");
 	      out.println("        postTimestamp.className = 'post-info';");
 	      out.println("        postTimestamp.textContent = post.post_timestamp;");
-	      out.println("        postElement.appendChild(postTimestamp);");
+	      out.println("        avatarBody.appendChild(postTimestamp);");
 	      
 	      out.println("        var postId = document.createElement('div');");
 	      out.println("        postId.className = 'post-info';");
 	      out.println("        postId.textContent = 'Post ID: ' + post.post_id;");
-	      out.println("        postElement.appendChild(postId);");
-	      
-	      
+	      out.println("        avatarBody.appendChild(postId);");
 	      
 	      out.println("        var eTimeBody = document.createElement('div');");
 	      out.println("        eTimeBody.className = 'event-body';");
 	      out.println("        postElement.appendChild(eTimeBody);");
-	      
-	      	      
+	         
 	      out.println("        var postEtimestamp = document.createElement('div');");
 	      out.println("        postEtimestamp.className = 'post-text';");
-	      out.println("        postEtimestamp.textContent = post.post_etimestamp;");
+	      out.println("        postEtimestamp.textContent = 'WHEN:' + post.post_etimestamp;");
 	      out.println("        eTimeBody.appendChild(postEtimestamp);");
-
-	     
-	      
-	      
-	      
-	      
-	      
-	      
 	      
 	      
 	      out.println("        var trailName = document.createElement('div');");
 	      out.println("        trailName.className = 'post-text';");
-	      out.println("        trailName.textContent = 'Trail: ' + post.trail_name;");
-	      out.println("        postElement.appendChild(trailName);");
+	      out.println("        trailName.textContent = 'WHERE: ' + post.trail_name;");
+	      out.println("        eTimeBody.appendChild(trailName);");
+	      
+	     
+	      
 	      out.println("}");
 	      
 	      //TRAIL CONDITION POST
@@ -358,33 +465,78 @@ public class LoadDB extends HttpServlet {
 	      
 	      out.println("        var postType = document.createElement('div');");
 	      out.println("        postType.className = 'post-type';");
-	      out.println("        postType.textContent = 'TRAIL CONDITION';");
+	      out.println("        postType.textContent = 'TRAIL CONDITION POST';");
 	      out.println("        postElement.appendChild(postType);");
 	      
+	      out.println("        var avatarBody = document.createElement('div');");
+	      out.println("        avatarBody.className = 'av-body';");
+	      out.println("        postElement.appendChild(avatarBody);");
+	      
+	      out.println("var avatar = document.createElement('div');");
+	      out.println("avatar.className = 'post-avatar';");
+	      out.println("var img = document.createElement('img');");
+	      out.println("img.src = 'https://i.imgur.com/UtMHtlM.png';");
+	      out.println("avatar.appendChild(img);");
+	      out.println("avatarBody.appendChild(avatar);");
+	      
 	      out.println("        var posterAlias = document.createElement('div');");
-	      out.println("        posterAlias.className = 'post-info';");
+	      out.println("        posterAlias.className = 'post-alias';");
 	      out.println("        posterAlias.textContent = 'Poster: ' + post.poster_alias;");
-	      out.println("        postElement.appendChild(posterAlias);");
+	      out.println("        avatarBody.appendChild(posterAlias);");
 	      
 	      out.println("        var postTimestamp = document.createElement('div');");
 	      out.println("        postTimestamp.className = 'post-info';");
 	      out.println("        postTimestamp.textContent = post.post_timestamp;");
-	      out.println("        postElement.appendChild(postTimestamp);");
+	      out.println("        avatarBody.appendChild(postTimestamp);");
 	      
 	      out.println("        var postId = document.createElement('div');");
 	      out.println("        postId.className = 'post-info';");
 	      out.println("        postId.textContent = 'Post ID: ' + post.post_id;");
-	      out.println("        postElement.appendChild(postId);");
+	      out.println("        avatarBody.appendChild(postId);");
+	      
+	      
+	      out.println("var scoreImg = document.createElement('img');");
+	      out.println("if (post.trail_score == 1) {");
+	      out.println("scoreImg.src = 'https://i.imgur.com/wI2KGxe.png';}");
+	      out.println("else if (post.trail_score == 2) {");
+	      out.println("scoreImg.src = 'https://i.imgur.com/dqS665W.png';}");
+	      out.println("else if (post.trail_score == 3) {");
+	      out.println("scoreImg.src = 'https://i.imgur.com/RRrQBbD.png';}");
+	      out.println("else if (post.trail_score == 4) {");
+	      out.println("scoreImg.src = 'https://i.imgur.com/nLK11iE.png';}");
+	      out.println("else if (post.trail_score == 5) {");
+	      out.println("scoreImg.src = 'https://i.imgur.com/WbDkNkz.png';}");
+	      
+	      out.println("        var scoreBody = document.createElement('div');");
+	      out.println("        scoreBody.className = 'score-body';");
+	      out.println("scoreBody.appendChild(scoreImg);");
+	      out.println("        postElement.appendChild(scoreBody);");
+	      
+	      
+	      out.println("        var infoBody = document.createElement('div');");
+	      out.println("        infoBody.className = 'info-body';");
+	      out.println("        postElement.appendChild(infoBody);");
+	      
 	      
 	      out.println("        var trailName = document.createElement('div');");
-	      out.println("        trailName.className = 'post-text';");
+	      out.println("        trailName.className = 'trail-text';");
 	      out.println("        trailName.textContent = 'Trail: ' + post.trail_name;");
-	      out.println("        postElement.appendChild(trailName);");
+	      out.println("        infoBody.appendChild(trailName);");
 	      
 	      out.println("        var trailScore = document.createElement('div');");
-	      out.println("        trailScore.className = 'post-text';");
-	      out.println("        trailScore.textContent = 'Score: ' + post.trail_score;");
-	      out.println("        postElement.appendChild(trailScore);");
+	      out.println("        trailScore.className = 'score-text';");
+	      out.println("if (post.trail_score == 1) {");
+	      out.println("trailScore.textContent = 'Trail Rating: Dry & Dusty';}");
+	      out.println("else if (post.trail_score == 2) {");
+	      out.println("trailScore.textContent = 'Trail Rating: Hero Dirt';}");
+	      out.println("else if (post.trail_score == 3) {");
+	      out.println("trailScore.textContent = 'Trail Rating: Damp';}");
+	      out.println("else if (post.trail_score == 4) {");
+	      out.println("trailScore.textContent = 'Trail Rating: Wet Spots';}");
+	      out.println("else if (post.trail_score == 5) {");
+	      out.println("trailScore.textContent = 'Trail Rating: Soaked';}");
+	      out.println("        infoBody.appendChild(trailScore);");
+
 	      
 	      out.println("}");
 	      
@@ -393,23 +545,34 @@ public class LoadDB extends HttpServlet {
 	      
 	      out.println("        var postType = document.createElement('div');");
 	      out.println("        postType.className = 'post-type';");
-	      out.println("        postType.textContent = 'TEXT';");
+	      out.println("        postType.textContent = 'TEXT POST';");
 	      out.println("        postElement.appendChild(postType);");
 	      
+	      out.println("        var avatarBody = document.createElement('div');");
+	      out.println("        avatarBody.className = 'av-body';");
+	      out.println("        postElement.appendChild(avatarBody);");
+	      
+	      out.println("var avatar = document.createElement('div');");
+	      out.println("avatar.className = 'post-avatar';");
+	      out.println("var img = document.createElement('img');");
+	      out.println("img.src = 'https://i.imgur.com/UtMHtlM.png';");
+	      out.println("avatar.appendChild(img);");
+	      out.println("avatarBody.appendChild(avatar);");
+	      
 	      out.println("        var posterAlias = document.createElement('div');");
-	      out.println("        posterAlias.className = 'post-info';");
+	      out.println("        posterAlias.className = 'post-alias';");
 	      out.println("        posterAlias.textContent = 'Poster: ' + post.poster_alias;");
-	      out.println("        postElement.appendChild(posterAlias);");
+	      out.println("        avatarBody.appendChild(posterAlias);");
 	      
 	      out.println("        var postTimestamp = document.createElement('div');");
 	      out.println("        postTimestamp.className = 'post-info';");
 	      out.println("        postTimestamp.textContent = post.post_timestamp;");
-	      out.println("        postElement.appendChild(postTimestamp);");
+	      out.println("        avatarBody.appendChild(postTimestamp);");
 	      
 	      out.println("        var postId = document.createElement('div');");
 	      out.println("        postId.className = 'post-info';");
 	      out.println("        postId.textContent = 'Post ID: ' + post.post_id;");
-	      out.println("        postElement.appendChild(postId);");
+	      out.println("        avatarBody.appendChild(postId);");
 	      
 	      out.println("if (post.trail_name !== 'null') {"); //Trail name not required field; must check is null to attempt to populate
 	      out.println("        var trailName = document.createElement('div');");
@@ -425,27 +588,44 @@ public class LoadDB extends HttpServlet {
 	      
 	      out.println("        var postType = document.createElement('div');");
 	      out.println("        postType.className = 'post-type';");
-	      out.println("        postType.textContent = 'WORK REQUEST';");
+	      out.println("        postType.textContent = 'WORK REQUEST POST';");
 	      out.println("        postElement.appendChild(postType);");
 	      
+	      out.println("        var avatarBody = document.createElement('div');");
+	      out.println("        avatarBody.className = 'av-body';");
+	      out.println("        postElement.appendChild(avatarBody);");
+	      
+	      out.println("var avatar = document.createElement('div');");
+	      out.println("avatar.className = 'post-avatar';");
+	      out.println("var img = document.createElement('img');");
+	      out.println("img.src = 'https://i.imgur.com/UtMHtlM.png';");
+	      out.println("avatar.appendChild(img);");
+	      out.println("avatarBody.appendChild(avatar);");
+	      
 	      out.println("        var posterAlias = document.createElement('div');");
-	      out.println("        posterAlias.className = 'post-info';");
+	      out.println("        posterAlias.className = 'post-alias';");
 	      out.println("        posterAlias.textContent = 'Poster: ' + post.poster_alias;");
-	      out.println("        postElement.appendChild(posterAlias);");
+	      out.println("        avatarBody.appendChild(posterAlias);");
 	      
 	      out.println("        var postTimestamp = document.createElement('div');");
 	      out.println("        postTimestamp.className = 'post-info';");
 	      out.println("        postTimestamp.textContent = post.post_timestamp;");
-	      out.println("        postElement.appendChild(postTimestamp);");
+	      out.println("        avatarBody.appendChild(postTimestamp);");
+	      
 	      out.println("        var postId = document.createElement('div');");
 	      out.println("        postId.className = 'post-info';");
 	      out.println("        postId.textContent = 'Post ID: ' + post.post_id;");
-	      out.println("        postElement.appendChild(postId);");
+	      out.println("        avatarBody.appendChild(postId);");
+	      
+	      out.println("        var infoBody = document.createElement('div');");
+	      out.println("        infoBody.className = 'info-body';");
+	      out.println("        postElement.appendChild(infoBody);");
+	      
 	      
 	      out.println("        var trailName = document.createElement('div');");
-	      out.println("        trailName.className = 'post-text';");
+	      out.println("        trailName.className = 'trail-text';");
 	      out.println("        trailName.textContent = 'Trail: ' + post.trail_name;");
-	      out.println("        postElement.appendChild(trailName);");
+	      out.println("        infoBody.appendChild(trailName);");
 	      out.println("}");
 	      
 	      //TYPE-INDEPENDENT DATA POPULATION
