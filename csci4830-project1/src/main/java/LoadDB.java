@@ -138,6 +138,17 @@ public class LoadDB extends HttpServlet {
 	      out.println("}");
 	     
 
+	      //EVENT BODY
+	      out.println(".event-body {");
+	      out.println("color: black;");
+	      out.println("background-color: #e68a8a;");
+	      out.println("max-width: 400px;");
+	      out.println("position: relative;");
+	      out.println("margin-bottom: 20px;");
+	      out.println("padding-left: 1%;");
+	      out.println("padding-right: 1%;");
+	      out.println("}");
+	      
 	      //POST BODY
 	      out.println(".post-body {");
 	      out.println("color: black;");
@@ -263,14 +274,16 @@ public class LoadDB extends HttpServlet {
 	    	  + post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));");
 	    	  		}
 	    	  //TEXT TYPE POST
-	    	  else if (post.getPost_type() == "t") {
+	    	  else if (post.getPost_type() == " t") {
+	    		  System.out.println("YES!\n");
 	    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
 	    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
 	    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
 	    	  +post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
 	    	  		}
 	    	  //WORK TYPE POST
-	          else {
+	          else
+	          {
 	        	  out.println("postList.push(new PostObject("+post.getPost_id()+", '"+post.getPoster_alias()+"', '"
 	          +post.getTrail_name()+"', '"+post.getTrail_score()+"', '"+post.getPost_body()+"', '"+post.getPost_report_count()+"', '"
 	          + post.getPost_timestamp()+"', '"+ post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
@@ -312,6 +325,26 @@ public class LoadDB extends HttpServlet {
 	      out.println("        postId.className = 'post-info';");
 	      out.println("        postId.textContent = 'Post ID: ' + post.post_id;");
 	      out.println("        postElement.appendChild(postId);");
+	      
+	      
+	      
+	      out.println("        var eTimeBody = document.createElement('div');");
+	      out.println("        eTimeBody.className = 'event-body';");
+	      out.println("        postElement.appendChild(eTimeBody);");
+	      
+	      	      
+	      out.println("        var postEtimestamp = document.createElement('div');");
+	      out.println("        postEtimestamp.className = 'post-text';");
+	      out.println("        postEtimestamp.textContent = post.post_etimestamp;");
+	      out.println("        eTimeBody.appendChild(postEtimestamp);");
+
+	     
+	      
+	      
+	      
+	      
+	      
+	      
 	      
 	      
 	      out.println("        var trailName = document.createElement('div');");
@@ -415,7 +448,7 @@ public class LoadDB extends HttpServlet {
 	      out.println("        postElement.appendChild(trailName);");
 	      out.println("}");
 	      
-	      //TYPE-INDENPENDENT DATA POPULATION
+	      //TYPE-INDEPENDENT DATA POPULATION
 	      out.println("if (post.post_body !== 'null') {"); //Body text not always a required field; must check is null to attempt to populate
 	      
 	      out.println("        var postBody = document.createElement('div');");
@@ -433,6 +466,7 @@ public class LoadDB extends HttpServlet {
 	      out.println("    });");
 
 	      out.println("}");
+	      
 	      
 	      
 	      
@@ -466,7 +500,8 @@ public class LoadDB extends HttpServlet {
                + post.getPost_body() + "\nReport count: " //
                + post.getPost_report_count() + "\nTimestamp: " //
                + post.getPost_timestamp() + "\nEvent Timestamp: " //
-               + post.getPost_etimestamp());
+               + post.getPost_etimestamp() + "\nPost Type: " //
+               + post.getPost_type());
 
          
       }

@@ -50,18 +50,15 @@ body {
 </header>
 
 <section>
+    <h1>Create a Post</h1>
 
-    <form action="Redirector" method="POST">
+    <form action="InsertDB" method="POST">
+		
+        User Alias: <input type="text" name="UserAlias" required="required"> <br />
+        Work Requested: <input type="text" name="PostBody" required="required"> <br />
+        Trail Name: <input type="text" name="TrailName" required="required"> <br />
 
-        Post Type:
-        <select name="PostType">
-            <option value="t">Text Post</option>
-            <option value="c">Trail Condition Update</option>
-            <option value="e">Event</option>
-            <option value="w">Work Request</option>
-        </select> <br />
-
-        <input type="submit" value="Select Post Type" />
+        <input type="submit" value="Create Post" />
     </form>
 
 </section>
