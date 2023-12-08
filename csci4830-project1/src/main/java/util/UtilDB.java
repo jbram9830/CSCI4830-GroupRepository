@@ -96,7 +96,7 @@ public class UtilDB {
       Transaction tx = null;
       try {
          tx = session.beginTransaction();
-         session.save(new DataModelPost(palias, tname, tscore, pbody, 0, null, etimestamp, post_type));
+         session.save(new DataModelPost(palias, tname, tscore, pbody, 0, etimestamp, etimestamp, post_type));
          tx.commit();
       } catch (HibernateException e) {
          if (tx != null)
@@ -105,5 +105,33 @@ public class UtilDB {
       } finally {
          session.close();
       }
+   }
+   
+   public static void deletePost(String id){
+	   Session session = getSessionFactory().openSession();      
+	   Transaction tx = null;
+	   try {
+		   tx = session.beginTransaction();
+		   String hql = "delete from DataModelPost where post_id = "+ id; 
+		   Query query = session.createQuery(hql);
+		   query.executeUpdate();
+		   tx.commit();
+	   } finally {
+		   session.close();
+	   }
+   }
+   
+   public static void deleteComment(String id){
+	   Session session = getSessionFactory().openSession();      
+	   Transaction tx = null;
+	   try {
+		   tx = session.beginTransaction();
+		   String hql = "delete from DataModelComment where post_id = "+ id; 
+		   Query query = session.createQuery(hql);
+		   query.executeUpdate();
+		   tx.commit();
+	   } finally {
+		   session.close();
+	   }
    }
 }

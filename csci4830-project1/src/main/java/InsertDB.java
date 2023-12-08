@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +15,7 @@ import util.UtilDB;
 @WebServlet("/InsertDB")
 public class InsertDB extends HttpServlet{
    private static final long serialVersionUID = 1L;
+   private static final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
    public InsertDB() {
       super();
@@ -25,9 +29,8 @@ public class InsertDB extends HttpServlet{
 	   PrintWriter out = response.getWriter();
 	   //response.sendRedirect("/csci4830-project1/landing2.html");
 	   response.setContentType("text/html");
-
-
-      UtilDB.createDataModelPost(user_alias, null, null, post_body, null, "t");
+	  Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+      UtilDB.createDataModelPost(user_alias, null, null, post_body, sdf3.format(timestamp), "t");
 
       out.println("<!DOCTYPE html>");
       out.println("<html>");
