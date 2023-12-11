@@ -30,8 +30,11 @@ public class DataModelComment {
    @Column(name = "post_id") 
    private Integer post_id;
    
-   @Column(name = "comment_body") 
-   private String comment_body;
+   @Column(name = "commenter_alias")
+   private String commenter_alias;
+   
+   @Column(name = "comment_textbody") 
+   private String comment_textbody;
    
    @Column(name = "comment_timestamp") 
    private String comment_timestamp;
@@ -43,19 +46,21 @@ public class DataModelComment {
    public DataModelComment() {
    }
    
-   public DataModelComment(Integer post_id, String comment_body, String comment_timestamp, Integer comment_report_count) {
+   public DataModelComment(Integer post_id, String calias, String cbody, String ctimestamp, Integer crcount) {
 	   this.post_id = post_id;
-	   this.comment_body = comment_body;
-	   this.comment_timestamp = comment_timestamp;
-	   this.comment_report_count = comment_report_count;
+	   this.commenter_alias = calias;
+	   this.comment_textbody = cbody;
+	   this.comment_timestamp = ctimestamp;
+	   this.comment_report_count = crcount;
    }
 
-   public DataModelComment(Integer comment_id, Integer post_id, String comment_body, String comment_timestamp, Integer comment_report_count) {
+   public DataModelComment(Integer comment_id, Integer post_id, String calias, String comment_body, String comment_timestamp, Integer crcount) {
       this.comment_id = comment_id;
       this.post_id = post_id;
-      this.comment_body = comment_body;
+      this.commenter_alias = calias;
+      this.comment_textbody = comment_body;
       this.comment_timestamp = comment_timestamp;
-      this.comment_report_count = comment_report_count;
+      this.comment_report_count = crcount;
    }
 
    
@@ -80,16 +85,28 @@ public class DataModelComment {
 		this.post_id = post_id;
 	}
 	
-	public String getComment_body() {
-		if (comment_body != null)
+	public String getComment_alias() {
+		if (commenter_alias != null)
 		{
-		return comment_body;
+		return commenter_alias;
+		}
+		return "none";
+	}
+	
+	public void setComment_alias(String calias) {
+		this.commenter_alias = calias;
+	}
+	
+	public String getComment_body() {
+		if (comment_textbody != null)
+		{
+		return comment_textbody;
 		}
 		return "none";
 	}
 	
 	public void setComment_body(String comment_body) {
-		this.comment_body = comment_body;
+		this.comment_textbody = comment_body;
 	}
 	
 	public String getComment_timestamp() {
@@ -118,6 +135,6 @@ public class DataModelComment {
 
 @Override
    public String toString() {
-      return "Comment: " + this.comment_id + this.post_id + this.comment_body + this.comment_timestamp + this.comment_report_count;
+      return "Comment: " + this.comment_id + this.post_id + this.comment_textbody + this.comment_timestamp + this.comment_report_count;
    }
 }

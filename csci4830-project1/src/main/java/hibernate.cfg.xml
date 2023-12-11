@@ -15,5 +15,6 @@
 		<!-- True you will see sql in console -->
 		<property name="show_sql">false</property>
 		<mapping class="datamodel.DataModelPost" />
+		<mapping class="datamodel.DataModelComment" />
 	</session-factory>
 </hibernate-configuration>

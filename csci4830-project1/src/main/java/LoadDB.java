@@ -25,9 +25,17 @@ public class LoadDB extends HttpServlet {
 	   request.setAttribute("posts", listDataModelPosts); // Will be available as ${products} in JSP
 	   //request.getRequestDispatcher("/WEB-INF/posts.jsp").forward(request, response);
 	   
+	   for (DataModelPost post : listDataModelPosts) {
+		      if (post.getPost_report_count() > 1) {
+	    		  UtilDB.deletePost(post.getPost_id().toString());
+	    	  }
+		      }
+	   
+	   listDataModelPosts = UtilDB.listDataModelPosts();
+	   request.setAttribute("posts", listDataModelPosts);
+	   
 	   System.out.println("the GET request has been made to /LoadDB");
 	   PrintWriter out = response.getWriter();
-	   //response.sendRedirect("/csci4830-project1/landing2.html");
 	   response.setContentType("text/html");
 	   
 	   
@@ -53,7 +61,7 @@ public class LoadDB extends HttpServlet {
 	      out.println("height: 100vh;");
 	      out.println("}");
 	      
-	      
+	      //
 	      //IMAGES
 	      //platte https://i.imgur.com/UCmjzJJ.png
 	      //
@@ -62,11 +70,7 @@ public class LoadDB extends HttpServlet {
 	      //w3 https://i.imgur.com/RRrQBbD.png
 	      //w4 https://i.imgur.com/nLK11iE.png
 	      //w5 https://i.imgur.com/WbDkNkz.png
-	      //
-	      //
-	      //
-	      //
-	      //
+
 	      
 	      //REFRESH BUTTON
 	      out.println("button2 {");
@@ -209,10 +213,9 @@ public class LoadDB extends HttpServlet {
 	      out.println("position: relative;");
 	      out.println("padding-left: 5%;");
 	      out.println("padding-right: 5%;");
-	      //out.println("display: grid;");
-	      //out.println("flex-flow: row nowrap;");
-	      //out.println("justify-content: space-evenly;");
 	      out.println("}");
+	      
+
 	      
 	      //POST TYPE
 	      out.println(".post-type {");
@@ -319,17 +322,12 @@ public class LoadDB extends HttpServlet {
 	      out.println("<a href=\"#\">Walnut Creek</a>");
 	      out.println("<a href=\"#\">Jewell</a>");
 	      out.println("<a href=\"#\">Other</a>");
-	      
-	      
-	      
+
 	      
 	      out.println("<a href=/csci4830-project1/create_post.html class=\"button1\">");
 	      out.println("Create Post");
 	      out.println("</a>");
-	      
-	      out.println("<button2");
-	      
-	      out.println("</button2>");
+
 	      
 	      
 	      out.println("</div>");
@@ -356,10 +354,13 @@ public class LoadDB extends HttpServlet {
 	      out.println("}");
 	      out.println("}");
 	      out.println("var postList = [];");
+	     
+	      
 	      
 	      
 	      //POST INFO POPULATE TO JS LIST
 	      for (DataModelPost post : listDataModelPosts) {
+
 	    	  //EVENT TYPE POST
 	    	  if (post.getPost_type() == "e") {
 	    	  		out.println("postList.push(new PostObject("+post.getPost_id()+", '"
@@ -376,7 +377,6 @@ public class LoadDB extends HttpServlet {
 	    	  		}
 	    	  //TEXT TYPE POST
 	    	  else if (post.getPost_type() == " t") {
-	    		  System.out.println("YES!\n");
 	    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
 	    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
 	    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
@@ -640,17 +640,41 @@ public class LoadDB extends HttpServlet {
 	      out.println("        postText.textContent = post.post_body;");
 	      out.println("        postBody.appendChild(postText);");
 	      out.println("}");
+
+	      
+	      out.println("var reportPost = document.createElement('div');");
+	      out.println("reportPost.className = 'post-text';");
+	      out.println("reportPost.textContent = 'Report Post';");
+	      out.println("reportPost.style.cursor = 'pointer';");
+	      out.println("reportPost.onclick = function() {");
+	      out.println("window.location.href = \"reporter.html\"");
+	      out.println("};");
+	      out.println("postElement.appendChild(reportPost);");
+	      
+	      out.println("var postComments = document.createElement('div');");
+	      out.println("postComments.className = 'post-text';");
+	      out.println("postComments.textContent = 'Comments';");
+	      out.println("postComments.style.cursor = 'pointer';");
+	      out.println("postComments.onclick = function() {");
+	      //out.println("window.location.href = \"post_comments.html\"");
+	      out.println("window.location.href = \"post_comments/\"+post.post_id+\".html\"");
+	      out.println("};");
+	      out.println("postElement.appendChild(postComments);");
+
+
+
+
+
+
+
+
+
 	      
 
 	      out.println("        postContainer.appendChild(postElement);");
 	      out.println("    });");
-
 	      out.println("}");
-	      
-	      
-	      
-	      
-	      
+
 	      out.println("populatePosts(postList);");
 	      
 	      out.println("        var endNote = document.createElement('div');");
