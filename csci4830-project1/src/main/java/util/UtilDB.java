@@ -91,12 +91,12 @@ public class UtilDB {
       return resultList;
    }
 
-   public static void createDataModelPost(String palias, String tname, Integer tscore, String pbody, String etimestamp, String post_type) {
+   public static void createDataModelPost(String palias, String tname, Integer tscore, String pbody, String post_timestamp, String etimestamp, String post_type) {
       Session session = getSessionFactory().openSession();
       Transaction tx = null;
       try {
          tx = session.beginTransaction();
-         session.save(new DataModelPost(palias, tname, tscore, pbody, 0, etimestamp, etimestamp, post_type));
+         session.save(new DataModelPost(palias, tname, tscore, pbody, 0, post_timestamp, etimestamp, post_type));
          tx.commit();
       } catch (HibernateException e) {
          if (tx != null)

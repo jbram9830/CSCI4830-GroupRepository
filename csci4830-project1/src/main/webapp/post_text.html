@@ -44,27 +44,28 @@ body {
 }
 </style>
 </head>
+
 <body>
 <header>
 <h1> Create Post </h1>
 </header>
 <div class="post-container">
 <section>
+    <h1>Create a Post</h1>
 
-    <form action="Redirector" method="POST">
+    <form action="InsertDB" method="POST">
 
-        Post Type:
-        <select name="PostType">
-            <option value="t">Text Post</option>
-            <option value="c">Trail Condition Update</option>
-            <option value="e">Event</option>
-            <option value="w">Work Request</option>
-        </select> <br />
+        User Alias: <input type="text" name="UserAlias" required="required" maxlength="30" placeholder="Max 30 characters..."> <br />
+        Post Body: <input type="text" name="PostBody" required="required" maxlength="500"> <br />
 
-        <input type="submit" value="Select Post Type" />
+        <input type="submit" value="Create Post" />
     </form>
 
 </section>
 </div>
+
+<footer>
+Copyright
+</footer>
 </body>
 </html>
