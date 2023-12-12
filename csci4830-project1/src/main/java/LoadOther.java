@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,8 +17,8 @@ import util.UtilDB;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name="/Loadlewisandclark", urlPatterns = "/lewisandclark.html")
-public class Loadlewisandclark extends HttpServlet {
+@WebServlet(name="/LoadOther", urlPatterns = "/other.html")
+public class LoadOther extends HttpServlet {
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -36,7 +35,7 @@ public class Loadlewisandclark extends HttpServlet {
 	   listDataModelPosts = UtilDB.listDataModelPosts();
 	   request.setAttribute("posts", listDataModelPosts);
 	   
-	   System.out.println("the GET request has been made to /Loadlandc");
+	   System.out.println("the GET request has been made to /LoadOther");
 	   PrintWriter out = response.getWriter();
 	   response.setContentType("text/html");
 	   
@@ -362,7 +361,7 @@ public class Loadlewisandclark extends HttpServlet {
 	      
 	      //POST INFO POPULATE TO JS LIST
 	      for (DataModelPost post : listDataModelPosts) {
-	    	  if (post.getTrail_name() == null && (post.getPost_body().contains("Lewis & Clark") || post.getPost_body().contains("lewis & clark") || post.getPost_body().contains("Lewis and Clark") || post.getPost_body().contains("lewis and clark"))){
+	    	  if (post.getTrail_name() == null && (post.getPost_body().contains("Other") || post.getPost_body().contains("other"))){
 			    	  //EVENT TYPE POST
 			    	  if (post.getPost_type() == "e") {
 			    	  		out.println("postList.push(new PostObject("+post.getPost_id()+", '"
@@ -395,7 +394,7 @@ public class Loadlewisandclark extends HttpServlet {
 	    	  else if(post.getTrail_name() == null){
 	    		  continue;
 	    	  }
-	    	  else if(post.getTrail_name().contains("Lewis")) {
+	    	  else if(post.getTrail_name().contains("Other")) {
 		    	  //EVENT TYPE POST
 		    	  if (post.getPost_type() == "e") {
 		    	  		out.println("postList.push(new PostObject("+post.getPost_id()+", '"
