@@ -33,9 +33,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	   
 	   List<DataModelComment> DataModelComments = UtilDB.listDataModelComments(postId);
 	   
+	   for (DataModelComment comment : DataModelComments) {
+		      if (comment.getComment_report_count() > 1) {
+	    		  UtilDB.deleteComment(Integer.toString(comment.getComment_id()));
+	    	  }
+		      }
+	   
 	   System.out.println("the GET request has been made to /LoadCommentsDB");
 	   PrintWriter out = response.getWriter();
 	   response.setContentType("text/html");
+	   
 	   
 	   
 	   
@@ -58,7 +65,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("align-items: center;");
 	      out.println("justify-content: flex-start;");
 	      out.println("height: 100vh;");
-	      out.println("}");   
+	      out.println("}");
+	      
 	      //CREATE POST BUTTON
 	      out.println("button1 {");
 	      out.println("background-color: #ecaf05;");
@@ -75,6 +83,17 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("color: #ffffff;");
 	      out.println("}");
 	      
+	    //AV BODY
+	      out.println(".av-body {");
+	      out.println("color: black;");
+	      out.println("background-color: #ecaf05;");
+	      out.println("max-width: 80%;");
+	      out.println("position: relative;");
+	      out.println("margin-top: 1%;");
+	      out.println("margin-bottom: 1%;");
+	      out.println("padding: 1%;");
+	      out.println("word-wrap: break-word;");
+	      out.println("}");
 	      
 	      //NAVBAR
 	      out.println(".navbar {");
@@ -111,7 +130,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("padding: 10px;");
 	      out.println("}");
 	     
-
+	      //POST ALIAS
+	      out.println(".post-alias {");
+	      out.println("font-weight: bold;");
+	      out.println("margin-left: 1%;");
+	      out.println("margin-right: auto;");
+	      out.println("text-align: left;");
+	      out.println("max-width: 200px;");
+	      out.println("font-size: 14px;");
+	      out.println("position: relative;");
+	      out.println("}");
 	      
 	      //POST BODY
 	      out.println(".post-body {");
@@ -123,6 +151,17 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("margin-bottom: 1%;");
 	      out.println("padding: 1%;");
 	      out.println("word-wrap: break-word;");
+	      out.println("}");
+	      
+	      //POST INFO
+	      out.println(".post-info {");
+	      out.println("font-weight: lighter;");
+	      out.println("margin-left: 1%;");
+	      out.println("margin-right: auto;");
+	      out.println("text-align: left;");
+	      out.println("max-width: 200px;");
+	      out.println("font-size: 10px;");
+	      out.println("position: relative;");
 	      out.println("}");
 	      
 
@@ -142,11 +181,24 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println(".post-info {");
 	      out.println("font-weight: lighter;");
 	      out.println("margin-left: 1%;");
+	      out.println("margin-top: 1%;");
 	      out.println("margin-right: auto;");
 	      out.println("text-align: left;");
 	      out.println("max-width: 200px;");
 	      out.println("font-size: 10px;");
 	      out.println("position: relative;");
+	      out.println("}");
+	      
+	      //POST BODY
+	      out.println(".post-body {");
+	      out.println("color: black;");
+	      out.println("background-color: #e0dede;");
+	      out.println("max-width: 80%;");
+	      out.println("position: relative;");
+	      out.println("margin-top: 1%;");
+	      out.println("margin-bottom: 1%;");
+	      out.println("padding: 1%;");
+	      out.println("word-wrap: break-word;");
 	      out.println("}");
 
 	      //POST TEXT
@@ -165,19 +217,20 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      
 	      // // // // // // // / // // // // // // / // // // // // // / // // // // // // / // // // // // // / // // // // // // 
 	     
+
 	      out.println("<body>");
 	      out.println("<h1>Omaha Trail Conditions</h1>");
 	      out.println("<div class=\"navbar\">");
-	      out.println("<a href=\"#\">ALL TRAILS</a>");
-	      out.println("<a href=\"#\">Platte</a>");
-	      out.println("<a href=\"#\">Lewis & Clark</a>");
-	      out.println("<a href=\"#\">Oxbow</a>");
-	      out.println("<a href=\"#\">Mandan</a>");
-	      out.println("<a href=\"#\">Tranquility</a>");
-	      out.println("<a href=\"#\">Swanson</a>");
-	      out.println("<a href=\"#\">Walnut Creek</a>");
-	      out.println("<a href=\"#\">Jewell</a>");
-	      out.println("<a href=\"#\">Other</a>");
+	      out.println("<a href=\"/csci4830-project1/landing.html\">ALL TRAILS</a>");
+	      out.println("<a href=\"/csci4830-project1/platte.html\">Platte</a>");
+	      out.println("<a href=\"/csci4830-project1/lewisandclark.html\">Lewis & Clark</a>");
+	      out.println("<a href=\"/csci4830-project1/oxbow.html\">Oxbow</a>");
+	      out.println("<a href=\"/csci4830-project1/mandan.html\">Mandan</a>");
+	      out.println("<a href=\"/csci4830-project1/tranquility.html\">Tranquility</a>");
+	      out.println("<a href=\"/csci4830-project1/swanson.html\">Swanson</a>");
+	      out.println("<a href=\"/csci4830-project1/walnutcreek.html\">Walnut Creek</a>");
+	      out.println("<a href=\"/csci4830-project1/jewell.html\">Jewell</a>");
+	      out.println("<a href=\"/csci4830-project1/other.html\">Other</a>");
 
 	      out.println("<a href=/csci4830-project1/create_post.html class=\"button1\">");
 	      out.println("Create Post");
@@ -205,7 +258,12 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("}");
 
 	      out.println("var postList = [];");
-	      out.println("postList.push(new PostObject(1, 15, 'tporter2', 'good job!!!', '2023-12-10 23:51:57', 0));");
+	      
+	      
+	      for (DataModelComment comment : DataModelComments) {
+	    	  out.println("postList.push(new PostObject("+comment.getComment_id()+", "+comment.getPost_id()+", '"+comment.getComment_alias()+"', '"+comment.getComment_body()+"', '"+comment.getComment_timestamp()+"', "+comment.getComment_report_count()+"));");
+	      }
+	      out.println("postList.reverse();");
 	      out.println("var postContainer = document.querySelector('.post-container');");
 
 	      out.println("function populatePosts(data) {");
@@ -214,36 +272,45 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("    var postElement = document.createElement('div');");
 	      out.println("    postElement.className = 'post';");
 
+	      out.println("        var avBody = document.createElement('div');");
+	      out.println("        avBody.className = 'av-body';");
+	      out.println("        postElement.appendChild(avBody);");
+	      
+	      
 	      out.println("    var posterAlias = document.createElement('div');");
-	      out.println("    posterAlias.className = 'post-text';");
+	      out.println("    posterAlias.className = 'post-alias';");
 	      out.println("    posterAlias.textContent = 'Poster: ' + post.commenter_alias;");
-	      out.println("    postElement.appendChild(posterAlias);");
+	      out.println("    avBody.appendChild(posterAlias);");
 
 	      out.println("    var postTimestamp = document.createElement('div');");
-	      out.println("    postTimestamp.className = 'post-text timestamp';");  // Add a class for styling
+	      out.println("    postTimestamp.className = 'post-info';");
 	      out.println("    postTimestamp.textContent = post.comment_timestamp;");
-	      out.println("    postElement.appendChild(postTimestamp);");
-
-	      out.println("    var postTextContainer = document.createElement('div');");
-	      out.println("    postTextContainer.className = 'post-text-container';"); // Add a container for post text
-	      out.println("    postElement.appendChild(postTextContainer);");
-
+	      out.println("    avBody.appendChild(postTimestamp);");
+	      
+	      out.println("    var postId = document.createElement('div');");
+	      out.println("    postId.className = 'post-info';");
+	      out.println("    postId.textContent = 'Comment ID: ' + post.comment_id;");
+	      out.println("    avBody.appendChild(postId);");
+	      
+	      out.println("        var postBody = document.createElement('div');");
+	      out.println("        postBody.className = 'post-body';");
+	      out.println("        postElement.appendChild(postBody);");
+	      
+	      
 	      out.println("    var postText = document.createElement('div');");
 	      out.println("    postText.className = 'post-text';");
 	      out.println("    postText.textContent = post.comment_body;");
-	      out.println("    postTextContainer.appendChild(postText);");
+	      out.println("    postBody.appendChild(postText);");
 	      
-
-	      out.println("var createComment = document.createElement('div');");
-	      out.println("createComment.className = 'end-text';");
-	      out.println("createComment.textContent = 'Create Comment';");
-	      out.println("createComment.style.cursor = 'pointer';");
-	      out.println("postContainer.appendChild(createComment);");
-	      out.println("createComment.onclick = function() {");
-
-	      out.println("window.location.href = \"create_comment/\"+post.post_id+\".html\"");
-
+	      
+	      out.println("var reportPost = document.createElement('div');");
+	      out.println("reportPost.className = 'post-text';");
+	      out.println("reportPost.textContent = 'Report Comment';");
+	      out.println("reportPost.style.cursor = 'pointer';");
+	      out.println("reportPost.onclick = function() {");
+	      out.println("window.location.href = \"/csci4830-project1/c_reporter.html\"");
 	      out.println("};");
+	      out.println("postElement.appendChild(reportPost);");
 	      
 	      
 
@@ -251,7 +318,19 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("  });");
 	      out.println("}");
 
+	      
+	      out.println("var createComment = document.createElement('div');");
+	      out.println("createComment.className = 'end-text';");
+	      out.println("createComment.textContent = 'Create Comment';");
+	      out.println("createComment.style.cursor = 'pointer';");
+	      out.println("postContainer.appendChild(createComment);");
+	      out.println("createComment.onclick = function() {");
+	      out.println("window.location.href = \"create_comment/\"+"+postId+"+\".html\"");
+	      out.println("};");
 	      out.println("populatePosts(postList);");
+	      
+	      
+	      
 	      
 	      
 	 

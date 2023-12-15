@@ -1,3 +1,6 @@
+
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,13 +19,14 @@ import util.UtilDB;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name="/LoadDB", urlPatterns = "/landing.html")
-public class LoadDB extends HttpServlet {
+@WebServlet(name="/LoadSwanson", urlPatterns = "/swanson.html")
+public class LoadSwanson extends HttpServlet {
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	   List<DataModelPost> listDataModelPosts = UtilDB.listDataModelPosts();
-	   request.setAttribute("posts", listDataModelPosts);
+	   request.setAttribute("posts", listDataModelPosts); // Will be available as ${products} in JSP
+	   //request.getRequestDispatcher("/WEB-INF/posts.jsp").forward(request, response);
 	   
 	   for (DataModelPost post : listDataModelPosts) {
 		      if (post.getPost_report_count() > 1) {
@@ -33,7 +37,7 @@ public class LoadDB extends HttpServlet {
 	   listDataModelPosts = UtilDB.listDataModelPosts();
 	   request.setAttribute("posts", listDataModelPosts);
 	   
-	   System.out.println("the GET request has been made to /LoadDB");
+	   System.out.println("the GET request has been made to /LoadSwanson");
 	   PrintWriter out = response.getWriter();
 	   response.setContentType("text/html");
 	   
@@ -359,36 +363,70 @@ public class LoadDB extends HttpServlet {
 	      
 	      //POST INFO POPULATE TO JS LIST
 	      for (DataModelPost post : listDataModelPosts) {
-
-	    	  //EVENT TYPE POST
-	    	  if (post.getPost_type() == "e") {
-	    	  		out.println("postList.push(new PostObject("+post.getPost_id()+", '"
-	    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
-	    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
-	    	  +post.getPost_etimestamp()+"', '"+ post.getPost_type()+"'));");      
+	    	  if (post.getTrail_name() == null && (post.getPost_body().contains("Swanson") || post.getPost_body().contains("swanson"))){
+			    	  //EVENT TYPE POST
+			    	  if (post.getPost_type() == "e") {
+			    	  		out.println("postList.push(new PostObject("+post.getPost_id()+", '"
+			    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
+			    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
+			    	  +post.getPost_etimestamp()+"', '"+ post.getPost_type()+"'));");      
+			    	  }
+			    	  //CONDITION TYPE POST
+			    	  else if (post.getPost_type() == "c") {
+			    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
+			    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
+			    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
+			    	  + post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));");
+			    	  		}
+			    	  //TEXT TYPE POST
+			    	  else if (post.getPost_type() == " t") {
+			    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
+			    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
+			    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
+			    	  +post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
+			    	  		}
+			    	  //WORK TYPE POST
+			          else
+			          {
+			        	  out.println("postList.push(new PostObject("+post.getPost_id()+", '"+post.getPoster_alias()+"', '"
+			          +post.getTrail_name()+"', '"+post.getTrail_score()+"', '"+post.getPost_body()+"', '"+post.getPost_report_count()+"', '"
+			          + post.getPost_timestamp()+"', '"+ post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
+			          }
 	    	  }
-	    	  //CONDITION TYPE POST
-	    	  else if (post.getPost_type() == "c") {
-	    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
-	    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
-	    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
-	    	  + post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));");
-	    	  		}
-	    	  //TEXT TYPE POST
-	    	  else if (post.getPost_type() == " t") {
-	    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
-	    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
-	    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
-	    	  +post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
-	    	  		}
-	    	  //WORK TYPE POST
-	          else
-	          {
-	        	  out.println("postList.push(new PostObject("+post.getPost_id()+", '"+post.getPoster_alias()+"', '"
-	          +post.getTrail_name()+"', '"+post.getTrail_score()+"', '"+post.getPost_body()+"', '"+post.getPost_report_count()+"', '"
-	          + post.getPost_timestamp()+"', '"+ post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
-	          }
-	          }
+	    	  else if(post.getTrail_name() == null){
+	    		  continue;
+	    	  }
+	    	  else if(post.getTrail_name().contains("Swanson")) {
+		    	  //EVENT TYPE POST
+		    	  if (post.getPost_type() == "e") {
+		    	  		out.println("postList.push(new PostObject("+post.getPost_id()+", '"
+		    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
+		    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
+		    	  +post.getPost_etimestamp()+"', '"+ post.getPost_type()+"'));");      
+		    	  }
+		    	  //CONDITION TYPE POST
+		    	  else if (post.getPost_type() == "c") {
+		    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
+		    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
+		    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
+		    	  + post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));");
+		    	  		}
+		    	  //TEXT TYPE POST
+		    	  else if (post.getPost_type() == " t") {
+		    		  out.println("postList.push(new PostObject("+post.getPost_id()+", '"
+		    	  +post.getPoster_alias()+"', '"+post.getTrail_name()+"', '"+post.getTrail_score()+"', '"
+		    	  +post.getPost_body()+"', '"+post.getPost_report_count()+"', '"+ post.getPost_timestamp()+"', '"
+		    	  +post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
+		    	  		}
+		    	  //WORK TYPE POST
+		          else
+		          {
+		        	  out.println("postList.push(new PostObject("+post.getPost_id()+", '"+post.getPoster_alias()+"', '"
+		          +post.getTrail_name()+"', '"+post.getTrail_score()+"', '"+post.getPost_body()+"', '"+post.getPost_report_count()+"', '"
+		          + post.getPost_timestamp()+"', '"+ post.getPost_etimestamp()+"', '" + post.getPost_type()+"'));"); 
+		          }
+	    	  }
+	   }
 	      
 	      
 	      out.println("postList.reverse();");
@@ -657,12 +695,15 @@ public class LoadDB extends HttpServlet {
 	      out.println("postComments.onclick = function() {");
 	      //out.println("window.location.href = \"post_comments.html\"");
 	      out.println("window.location.href = \"post_comments/\"+post.post_id+\".html\"");
+	      out.println("window.location.href = \"post_comments/\"+post.post_id+\".html\"");
 	      out.println("};");
 	      out.println("postElement.appendChild(postComments);");
+	      
+	      
 
 
-
-
+	     // http://localhost:8080/csci4830-project1/post_comments/33.html
+	     // http://localhost:8080/csci4830-project1/post_comments/49.html
 
 
 

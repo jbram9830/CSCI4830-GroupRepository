@@ -213,6 +213,24 @@ public class UtilDB {
 	      }
 	   }
    
+   public static void incrementCReportCount(int commentId) {
+	      Session session = getSessionFactory().openSession();
+	      Transaction tx = null;
+
+	      try {
+	         tx = session.beginTransaction();
+	         Query q = session.createQuery("update DataModelComment comment set comment.comment_report_count = comment.comment_report_count + 1 where comment_id = "+commentId);
+	         q.executeUpdate();
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx != null)
+	            tx.rollback();
+	         e.printStackTrace();
+	      } finally {
+	         session.close();
+	      }
+	   }
+   
    public static void attemptReportDelete(int postId) {
 	      Session session = getSessionFactory().openSession();
 	      Transaction tx = null;
@@ -250,7 +268,7 @@ public class UtilDB {
 	   Transaction tx = null;
 	   try {
 		   tx = session.beginTransaction();
-		   String hql = "delete from DataModelComment where post_id = "+ id; 
+		   String hql = "delete from DataModelComment where comment_id = "+ id; 
 		   Query query = session.createQuery(hql);
 		   query.executeUpdate();
 		   tx.commit();

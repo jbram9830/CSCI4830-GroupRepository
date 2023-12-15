@@ -29,7 +29,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	   StringBuilder requestURL = new StringBuilder(request.getRequestURL().toString());
 	   String[] pathParts = requestURL.toString().split("/",0);
 	   String postIdStr = pathParts[6];
-	   postIdStr ="15";
+	   postIdStr = postIdStr.substring(0, postIdStr.length() - 5);
+	   //postIdStr ="15";
 	   int postId = Integer.parseInt(postIdStr.trim());
 	   int okay = postId;
 	   
@@ -37,11 +38,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	   List<DataModelComment> DataModelComments = UtilDB.listDataModelComments(postId);
 	   request.setAttribute("comments", DataModelComments);
 	   
-	   for (DataModelComment comment : DataModelComments) {
-		      if (comment.getComment_report_count() > 1) {
-	    		  UtilDB.deletePost(comment.getPost_id().toString());
-	    	  }
-		      }
+	   
 	   List<DataModelPost> listDataModelPosts = UtilDB.listDataModelPosts();
 	   DataModelPost post = null;
 	   for (DataModelPost derp : listDataModelPosts) {
@@ -113,13 +110,14 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	      out.println("<div class=\"post-container\">");
 	      out.println("<section>");
 	      out.println("");
-	      out.println("    <form action=\"InsertCommentDB\" method=\"POST\">");
+	      //out.println("    <form action=\"InsertCommentDB\"" + okay + " method=\"POST\">");
+	      out.println("    <form action=\"InsertCommentDB/" + okay + " method=\"POST\">");
 	      out.println("");
 	      out.println("        Commenter Alias: <input type=\"text\" name=\"CommenterAlias\" required=\"required\" maxlength=\"30\" placeholder=\"Max 30 characters...\"> <br />");
 	      out.println("        Comment Body: <input type=\"text\" name=\"CommentBody\" required=\"required\" maxlength=\"500\"> <br />");
 	      
 	      
-	      out.println("        <input type=\"text\" name=\"postId\" required=\"required\"  value=\""+okay+"\"> <br />");
+	      out.println("        <input type=\"hidden\" name=\"postId\" required=\"required\"  value=\""+okay+"\"> <br />");
 	      out.println("");
 	      out.println("        <input type=\"submit\" value=\"Submit\" />");
 	      out.println("    </form>");
